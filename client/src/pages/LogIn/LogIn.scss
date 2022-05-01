@@ -1,0 +1,16 @@
+.login {
+    margin: 6rem auto;
+    width: 80%;
+    background-color: #fff;
+    height: 50rem;
+    border-radius: 9px;
+    box-shadow: 0 .7rem .8rem rgba(0,0,0, .2);
+
+    display: flex;
+    overflow: hidden;
+
+   @media screen and (max-width: 480px) {
+       flex-direction: column;
+       height: auto;
+   }
+}
