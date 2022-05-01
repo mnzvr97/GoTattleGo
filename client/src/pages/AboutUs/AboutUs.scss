@@ -1,0 +1,87 @@
+.about {
+
+    padding: 4rem;
+
+    &__details {
+        display: flex;
+
+        @media screen and (max-width: 480px) {
+            flex-direction: column;
+        }
+    }
+
+    &__mainlefttitle {
+        margin-top: 2rem;
+        color: #5d5d5d;
+        font-size: 2.1rem;
+
+        @media screen and (max-width: 480px) {
+            font-size: 1.7rem;
+        }
+    }
+
+    &__title {
+        font-size: 4.5rem;
+        opacity: 75%;
+      
+        @media screen and (max-width: 480px) {
+            font-size:4rem;
+        }
+    }
+   
+    
+    &__title:after {
+        content: ""; 
+        display: block; 
+        margin: 0 0; 
+        width: 7%; 
+        padding-top: 8px; 
+        border-bottom: 3px solid black; 
+
+        @media screen and (max-width: 480px) {
+            width: 24%;
+        }
+    }
+
+    &__paragraph {
+        font-family: sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.5;
+        opacity: 85%;
+    }
+
+    &__btn {
+        border: none;
+        background-color: #2D31FA;
+        cursor: pointer;
+        padding: 1.2rem 3rem;
+        color: #fff;
+        font-size: 2rem;
+        letter-spacing: .5rem;
+        margin-top: 2rem;
+        border-radius: 20px;
+
+        &:hover {
+            background-color: #1d20c2;
+            color: #fff;
+
+        }
+    }
+
+    &__social {
+        margin: 3rem 2rem;
+    }
+
+    &__socialicons {
+        font-size: 4rem;
+        padding: 0 1rem;
+        color: #3d3d3d;
+        cursor: pointer;
+
+        &:hover {
+            color: #2D31FA;
+        }
+    }
+
+}
+
