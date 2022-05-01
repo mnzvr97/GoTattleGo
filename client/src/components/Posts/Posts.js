@@ -1,6 +1,5 @@
 import React, { useState ,useEffect } from "react";
 
-import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 import "./Posts.scss"
 import { axiosInstance } from "../../config";
 const Post = React.lazy(() => import("../Post/Post"))
@@ -29,7 +28,6 @@ const Posts = () => {
     console.log(loadedBlog);
             if(loading) {
                 return <section className="spinner">
-                    <LoadingSpinner />
                 </section>
             }
 
