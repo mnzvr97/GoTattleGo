@@ -1,52 +1,54 @@
-import React, {Suspense} from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import Home from "./pages/Home/Home";
+import HomePage from './pages/homepage/homepage.component';
+import ChatPage from './pages/chatpage/chatpage.component';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import Header from './components/header/header.component';
 
-const LogIn = React.lazy(() => import("./pages/LogIn/LogIn"))
-const SignUp = React.lazy(() => import("./pages/SignUp/Signup"))
-const SinglePage = React.lazy(() => import("./pages/SinglePage/SinglePage"))
-const Write = React.lazy(() => import("./pages/Write/Write"))
-const AboutUs = React.lazy(() => import("./pages/AboutUs/AboutUs"))
+import { GlobalStyle } from './global.styles';
 
+import { selectCurrentUser } from './redux/user/user.selectors';
+import { checkUserAuth } from './redux/user/user.actions';
 
-function App() {
+const App = ({ checkUserAuth, currentUser }) => {
+  useEffect(() => {
+    checkUserAuth();
+  }, [checkUserAuth]);
 
   return (
-   <Suspense>
-    <Switch>
-
-  <Route path="/" exact>
-    <Redirect to="/home" />
-   </Route>
-
-   <Route path="/signin" exact>
-    <LogIn />
-   </Route>
-
-   <Route path="/signup" exact>
-    <SignUp />
-   </Route>
-
-   <Route path="/home" exact>
-    <Home />
-   </Route>
-
-   <Route path="/aboutus" exact>
-    <AboutUs />
-   </Route>
-
-   <Route path="/home/post/:postId">
-   <SinglePage />
-   </Route>
-     
-   <Route path="/Write">
-   <Write />
-   </Route>
-  
-   </Switch>
-   </Suspense>
+    <div>
+      <GlobalStyle />
+      <Header />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route
+          exact
+          path='/chat'
+          render={() =>
+            !currentUser ? <Redirect to='/signin' /> : <ChatPage />
+          }
+        />
+        <Route
+          exact
+          path='/signin'
+          render={() =>
+            currentUser ? <Redirect to='/chat' /> : <SignInAndSignUpPage />
+          }
+        />
+      </Switch>
+    </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  checkUserAuth: () => dispatch(checkUserAuth()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
