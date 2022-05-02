@@ -33,12 +33,12 @@ router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({email: req.body.email})
         if(!user) {
-            return res.status(400).json("email doesnt exist. Please Register")
+            return res.status(400).json("Email doesnt exist. Please Register")
         }
 
         const validate = await bcrypt.compare(req.body.password, user.password)
         if(!validate) {
-            return res.status(400).json("Wrong credentials")
+            return res.status(400).json("Incorrect Information")
         }
 
         const {password, ...others} = user._doc; //seperating password and other login credentials;
