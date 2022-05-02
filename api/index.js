@@ -1,6 +1,17 @@
-env.config(); 
+const dotenv = require('dotenv');
+const express = require('express');
+const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require("path"); 
+const authRoute = require("./routes/auth")
+const postRoute = require("./routes/posts")
+
+const app = express ();
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(bodyparser.urlencoded({extended: true}));
+
+dotenv.config()
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
