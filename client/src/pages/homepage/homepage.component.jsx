@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <HomePageContainer>
       <h1>TattleGo</h1>
-      <h2>Convo's on the Go</h2>
+      <h2>CONVOS ON THE GO</h2>
     </HomePageContainer>
   );
 };

@@ -27,8 +27,8 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoContainer = styled(Link)`
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
   padding: 2px 0 0;
   transition: all 300ms ease-out;
 
@@ -61,7 +61,7 @@ export const OptionsContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    width: 350px;
+    width: 600px;
     justify-content: space-around;
 
     > *:first-child {
@@ -77,13 +77,13 @@ export const OptionLink = styled(Link)`
   margin: 4px 0;
   cursor: pointer;
 
-  color: #f03b2c;
+  color: #FFA500;
   background: white;
   box-shadow: 4px 4px 4px 0 grey;
 
   &:hover {
     color: white;
-    background: #f03b2c;
+    background: #FFA500;
   }
 
   &.open {

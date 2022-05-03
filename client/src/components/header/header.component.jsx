@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { ReactComponent as Logo } from '../../assets/chat.svg';
+import axios from 'axios';
 
 const Header = ({ currentUser, signOutStart }) => {
   const [hidden, setHidden] = useState({
@@ -68,6 +69,17 @@ const Header = ({ currentUser, signOutStart }) => {
     setHidden(true);
   };
 
+  const handleDelete = () => {
+    console.log(currentUser)
+    axios.post(`/api/users/delete/${currentUser._id}`).then(res=>{
+      if(res.ok) {alert("User was deleted Successfuly")
+      
+      signOutStart()};
+    })
+    // axios.get("/test")
+    // .then(res=>console.log(res))
+  };
+
   useEffect(() => {
     setHeight(headerRef.current.clientHeight * 0.4);
 
@@ -90,6 +102,13 @@ const Header = ({ currentUser, signOutStart }) => {
       <OptionsContainer ref={optionContainerRef}>
         <OptionLink className='options' to='/' onClick={removeDropdown}>
           HOME
+        </OptionLink>
+        <OptionLink className='options' to='/signin' onClick={() => {
+            handleDelete();
+            if (!currentUser) alert('Login first');
+          }}
+          >
+          DEACTIVATE
         </OptionLink>
         <OptionLink
           className='options'

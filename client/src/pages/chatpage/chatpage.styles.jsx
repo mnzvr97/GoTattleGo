@@ -23,13 +23,13 @@ export const MessagesContainer = styled.div`
 `;
 
 export const FormContainer = styled.form`
-  height: 7%;
+  height: 18%;
   min-height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #f03b2c;
+  background-color: #FFA500;
 `;
 
 export const InputContainer = styled.input`

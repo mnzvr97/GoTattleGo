@@ -7,6 +7,7 @@ import HomePage from './pages/homepage/homepage.component';
 import ChatPage from './pages/chatpage/chatpage.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 
 import { GlobalStyle } from './global.styles';
 
@@ -39,6 +40,7 @@ const App = ({ checkUserAuth, currentUser }) => {
           }
         />
       </Switch>
+      <Footer/>
     </div>
   );
 };
